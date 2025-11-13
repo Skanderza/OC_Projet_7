@@ -37,3 +37,15 @@ app-test/
 
 # Fichiers divers
 *.webp
+# Fichiers sensibles 
+.env
+**/.env
+
+# Scripts de test manuel
+test_manuel/
+app/test_manuel/
+
+# Fichiers environment dupliqués dans app/
+app/environment*.yml
+optuna_test.ipynb
+microsoft_exo1.ipynb

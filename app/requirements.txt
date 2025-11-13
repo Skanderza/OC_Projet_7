@@ -1,0 +1,5 @@
+fastapi==0.120.1
+uvicorn==0.38.0
+tensorflow-macos==2.15.0
+transformers==4.57.1
+pydantic==2.12.3
