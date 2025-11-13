@@ -1,0 +1,39 @@
+# Environnements Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+p7_bert/
+*.so
+
+# MLflow & Optuna
+mlruns/
+mlflow_artifacts/
+optuna_*.db
+
+# Datasets (trop volumineux pour Git)
+dataset/
+
+# Modèles entraînés
+sentiment_model_tf/
+distilbert_tokenizer/
+tokenizer_*/
+temp_tokenizer/
+*.model
+*.h5
+*.pkl
+
+# Fichiers macOS
+.DS_Store
+
+# SQLite
+*.sqlite3
+*.db
+
+# Dossiers temporaires/tests
+copy/
+test-azure/
+app-test/
+
+# Fichiers divers
+*.webp
