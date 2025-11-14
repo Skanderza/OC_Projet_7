@@ -7,7 +7,7 @@ from PIL import Image
 st.set_page_config(page_title="Sentiment Analysis", layout="centered")
 
 # Logo
-logo = Image.open("/Users/skanderzahi/Desktop/P7/projet/logo.webp")
+logo = Image.open("/Users/skanderzahi/Desktop/P7/projet_7/app/logo.webp")
 
 col1, col2 = st.columns([1, 4]) # Crée 2 colonnes avec ratio 1:4
 with col1:
@@ -115,7 +115,6 @@ if (
 
     # Feedback 
     st.markdown("---")
-    st.subheader("Feedback")
     st.markdown("Was this prediction correct?")
 
     # Widget feedback avec clé unique 

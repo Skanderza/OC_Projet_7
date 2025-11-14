@@ -1,12 +1,12 @@
 from tensorflow import keras
 from transformers import TFDistilBertModel, DistilBertTokenizer
-from Tweets import PredictedResult  
+from .Tweets import PredictedResult  
 import os
 
 os.environ['TF_USE_LEGACY_KERAS'] = '0'
 
 # Chemin  vers le modèle dans MLflow
-MODEL_PATH = "/Users/skanderzahi/Desktop/P7/projet/mlruns/379503310426968982/models/m-bae25b59f2d94b2b82a0e174e5d4d303/artifacts/data/model"
+MODEL_PATH = "/Users/skanderzahi/Desktop/P7/projet_7/mlruns/379503310426968982/models/m-bae25b59f2d94b2b82a0e174e5d4d303/artifacts/data/model"
 MAX_LENGTH = 128
 
 # Initialisation des variables

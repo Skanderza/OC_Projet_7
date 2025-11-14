@@ -106,5 +106,5 @@ def log_api_health(status: str, environment="local"):
             }
         },
     )
-    emoji = "💚" if status == "healthy" else "💔"
-    print(f"{emoji} Health check: {status}")
+    color = "✅" if status == "healthy" else "❌"
+    print(f"{color} Health check: {status}")

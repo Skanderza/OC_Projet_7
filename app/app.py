@@ -2,10 +2,10 @@ import os
 os.environ['TF_USE_LEGACY_KERAS'] = '1'
 import uvicorn
 from fastapi import FastAPI, HTTPException
-from Tweets import Tweet, PredictedResult, UserFeedback
-from Model import model, tokenizer, predict_sentiment
+from .Tweets import Tweet, PredictedResult, UserFeedback
+from .Model import model, tokenizer, predict_sentiment
 import time 
-from monitoring import log_error_pred, log_prediction
+from .monitoring import log_error_pred, log_prediction
 
 
 

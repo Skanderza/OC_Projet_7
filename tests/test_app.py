@@ -136,7 +136,7 @@ class TestAPI(unittest.TestCase):
         # Le message exact vient de HTTPException dans app.py
         self.assertIn("Erreur lors de l'enregistrement", data["detail"])
 
-
+# test ok
 
 if __name__ == "__main__":
     unittest.main()
