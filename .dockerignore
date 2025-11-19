@@ -1,0 +1,17 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+.gitignore
+*.md
+tests/
+notebooks/
+dataset/
+mlruns/
+*.ipynb
+.DS_Store
+venv/
+env/
+*.db
+*.sqlite3
+model_tf_lite.py
