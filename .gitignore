@@ -42,6 +42,7 @@ azure_test_exp/
 assets/
 optuna_test.ipynb
 microsoft_exo1.ipynb
+Model_tf_non_reduit.py
 
 # Fichiers divers
 *.webp

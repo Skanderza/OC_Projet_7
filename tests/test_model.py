@@ -1,6 +1,7 @@
 import unittest
 
 from app.Model import model, tokenizer, predict_sentiment, MAX_LENGTH
+
 from app.Tweets import PredictedResult
 
 
