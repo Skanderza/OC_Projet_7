@@ -11,7 +11,7 @@ mlruns/
 mlflow_artifacts/
 optuna_*.db
 
-# Datasets (trop volumineux pour Git)
+# Datasets
 dataset/
 
 # Modèles entraînés
@@ -30,10 +30,18 @@ temp_tokenizer/
 *.sqlite3
 *.db
 
+# Fichier init Python vide
+app/__init__.py
+
 # Dossiers temporaires/tests
 copy/
 test-azure/
 app-test/
+app-test1/
+azure_test_exp/
+assets/
+optuna_test.ipynb
+microsoft_exo1.ipynb
 
 # Fichiers divers
 *.webp
@@ -45,7 +53,8 @@ app-test/
 test_manuel/
 app/test_manuel/
 
-# Fichiers environment dupliqués dans app/
+# Fichiers envi
 app/environment*.yml
-optuna_test.ipynb
-microsoft_exo1.ipynb
+environment.yml
+environment_min.yml
+environment_nobuilds.yml
