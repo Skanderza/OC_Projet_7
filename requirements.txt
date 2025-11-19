@@ -1,0 +1,10 @@
+fastapi==0.121.2
+numpy==2.3.5
+opencensus==0.11.4
+opencensus_context==0.1.3
+opencensus_ext_azure==1.1.15
+pydantic==2.12.4
+python-dotenv==1.2.1
+tensorflow==2.15.0
+transformers==4.57.1
+uvicorn==0.38.0
