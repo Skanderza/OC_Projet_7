@@ -9,7 +9,7 @@ p7_bert/
 # MLflow & Optuna
 mlruns/
 mlflow_artifacts/
-optuna_*.db
+optuna/
 
 # Datasets
 dataset/
@@ -43,9 +43,19 @@ assets/
 optuna_test.ipynb
 microsoft_exo1.ipynb
 Model_tf_non_reduit.py
+test_check_model.ipynb
+models/
+models_final/
+# archives dev locales
+dev/
 
-# Fichiers divers
-*.webp
+# Versions de test TFLite
+app/model.tfliteV*
+app/model_test.tflite
+app/Model_to_tflite.py
+app/model_keras/
+app/model.tflite
+
 # Fichiers sensibles 
 .env
 **/.env
@@ -59,3 +69,21 @@ app/environment*.yml
 environment.yml
 environment_min.yml
 environment_nobuilds.yml
+
+
+# Scripts de conversion et debug temporaires
+export_*.py
+find_*.py
+match_*.py
+list_*.py
+
+# Images générées automatiquement
+*.png
+*.jpg
+!docs/**/*.png
+!docs/**/*.jpg
+
+
+app/models_lr/*.joblib
+
+

@@ -26,7 +26,10 @@ converter = tf.lite.TFLiteConverter.from_keras_model(model)
 
 print("Optimisation du modèle")
 # Optimisations pour réduire la taille
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
+# converter.optimizations = [tf.lite.Optimize.DEFAULT] => degrade les performances
+
+# Force float32 (pas de quantification)
+converter.target_spec.supported_types = [tf.float32]
 
 print("Executer la conversion du modèle")
 # Conversion
