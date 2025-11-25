@@ -84,6 +84,5 @@ list_*.py
 !docs/**/*.jpg
 
 
-app/models_lr/*.joblib
 
 
