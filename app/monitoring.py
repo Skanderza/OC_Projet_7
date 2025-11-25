@@ -1,6 +1,7 @@
 from opencensus.ext.azure.log_exporter import (
     AzureLogHandler,
 )  # Pour envoyer des logs vers Azure
+
 import logging  # Pour créer des logs (messages)
 import os
 from dotenv import load_dotenv

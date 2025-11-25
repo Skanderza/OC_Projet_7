@@ -15,3 +15,10 @@ env/
 *.db
 *.sqlite3
 model_tf_lite.py
+
+
+*.csv
+*.parquet
+*.h5
+*.pt
+*.ckpt

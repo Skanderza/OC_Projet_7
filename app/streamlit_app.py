@@ -2,7 +2,7 @@
 import streamlit as st
 import requests
 from PIL import Image
-
+import os
 
 st.set_page_config(page_title="Sentiment Analysis", layout="centered")
 
@@ -17,7 +17,12 @@ with col2:
     st.title("_Air paradis_")
 
 # URL de l'API
-API_URL = "http://127.0.0.1:8000"
+RUN_MODE = os.getenv("RUN_MODE", "local")  #  ou 
+
+if RUN_MODE == "local":
+    API_URL = "http://127.0.0.1:8000" # local
+else:
+    API_URL = "https://sentiment-twitter-p7-357ab866923c.herokuapp.com" # prod
 
 # Titre principal
 st.title("Tweet Sentiment Analysis")
@@ -155,4 +160,4 @@ if (
 
 # Footer
 st.markdown("---")
-st.caption("Powered by DistilBERT | FastAPI | Streamlit | Air Paradis © 2025")
+st.caption("TF-IDF | Logistic Regression | FastAPI | Streamlit | Air Paradis © 2025")
