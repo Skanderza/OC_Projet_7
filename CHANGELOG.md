@@ -26,7 +26,7 @@ Documentation des versions principales du projet.
 - Notebooks déplacés dans `notebook/`
 - Fichiers temporaires archivés dans `dev/`
 
-## [0.3.0] - 2024-11-12 - Tentative  sans TFLite 
+## [0.3.0] - 2024-11-12 - Tentative  DistilBERT sans TFLite (tester uniquement en local)
 
 ### Modèle : DistilBERT 
 
