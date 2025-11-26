@@ -42,6 +42,10 @@ jobs:
     needs: tests
     if: github.ref == 'refs/heads/main' && github.event_name == 'push' # deployer si push sur main
 
+    env:
+      APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.APPINSIGHTS_INSTRUMENTATION_KEY }}
+      RUN_MODE: prod
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4 # reclone du repo nouvelle VM)
