@@ -40,7 +40,7 @@ class TestAPI(unittest.TestCase):
         if response.status_code == 200:
             data = response.json()
             self.assertEqual(data["status"], "ok")
-            self.assertEqual(data["model"], "loaded")
+            self.assertEqual(data["model"], "logreg_tfidf")
             self.assertIn("environment", data)
 
     def test_predict_route_with_valid_tweet(self):

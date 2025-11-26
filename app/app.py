@@ -40,7 +40,9 @@ def index():
 def health_check():
     if tfidf is None or logreg is None:
         raise HTTPException(503, "Modèle LR non disponible")
-    return {"status": "ok", "model": "logreg_tfidf"}
+    return {"status": "ok", 
+            "model": "logreg_tfidf",
+            "environment": Environment}
 
 # # Route pour les prédictions
 # # @app.post('/predict', response_model=PredictedResult)
