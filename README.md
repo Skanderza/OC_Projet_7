@@ -4,16 +4,6 @@ Prototype IA pour anticiper le bad buzz sur les réseaux sociaux(Twitter)
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)]()
 
-[![MLflow](https://img.shields.io/badge/MLflow-3.x-orange.svg)]()
-
-[![FastAPI](https://img.shields.io/badge/FastAPI-latest-green.svg)]()
-
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red.svg)](https://streamlit.io/)
-
-[![Heroku](https://img.shields.io/badge/Deployed-Heroku-purple.svg)]()
-
-[![Azure](https://img.shields.io/badge/Monitoring-Azure%20Insights-0078D4.svg)](https://azure.microsoft.com/)
-
 ## Contexte du projet
 
 ### Le Client
