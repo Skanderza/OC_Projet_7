@@ -93,12 +93,13 @@ OC_Projet_7/
 │   ├── app.py              # Application FastAPI
 │   ├── monitoring.py       # Intégration Azure Insights
 │   └── streamlit_app.py    # Interface utilisateur
+│   └── logo.webp    # Logo app
 ├── models_final/           # Modèles finaux versionnés
 │   ├── logreg_tfidf_133k.joblib
 │   └── tfidf_vectorizer_133k.joblib
 ├── notebook/
 │   ├── p7_EDA.ipynb                # Analyse exploratoire
-│   ├── p7_modele_simple.ipynb      # TF-IDF + LogReg
+│   ├── p7_modele_simple.ipynb      # Regression logistique
 │   ├── p7_DL_simple.ipynb          # Deep Learning simple
 │   ├── p7_DL_avance.ipynb          # Deep Learning avancé
 │   └── test_model_distilBert.ipynb # Expérimentation BERT
@@ -107,13 +108,14 @@ OC_Projet_7/
 │   ├── test_app.py             # Tests API
 │   ├── test_model_lr.py        # Tests modèle LogReg
 │   └── test_model_distilbert.py # Tests modèle BERT
+├── presentation/
+│   └──BLOG.md                 # Article blog MLOps
 ├── .dockerignore
 ├── .gitignore
 ├── CHANGELOG.md            # Historique des versions
 ├── Dockerfile              # Configuration Docker
 ├── Procfile                # Configuration Heroku
 ├── README.md               # Ce fichier
-├── BLOG.md                 # Article blog MLOps
 ├── model_tf_lite.py        # Script conversion TF Lite
 ├── requirements.txt        # Dépendances Python
 └── runtime.txt             # Version Python Heroku
@@ -158,7 +160,7 @@ streamlit run app/streamlit/app.py
 - **Interface Streamlit** : http://localhost:8501
 - **API locale** : http://localhost:8000/docs
 - **MLflow UI** : http://localhost:5000
-- **Heroku** : https://sentiment-twitter-p7-357ab866923c.herokuapp.com/docs
+- **Heroku** : https://sentiment-twitter-p7-357ab866923c.herokuapp.com/docs (Dyno deconnecté)
 
 ---
 
