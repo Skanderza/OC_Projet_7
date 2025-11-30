@@ -158,8 +158,8 @@ streamlit run app/streamlit/app.py
 
 | Modèle | Accuracy | F1-Score | Precision | Déployé |
 |--------|----------|----------|---------|:-------:|
-| TF-IDF + Logistic Regression | 80% | 80% | 79% | ✅ |
-| DistilBERT | 81% | 80% | 85%  | ❌ |
+| TF-IDF + Logistic Regression | 0.795 | 0.795 | 0.794 | ✅ |
+| DistilBERT | 0.809 | 0.795| 0.854 | ❌ |
 
 
 **Choix du modèle de production** : TF-IDF + Logistic Regression
