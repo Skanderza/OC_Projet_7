@@ -650,7 +650,7 @@ mlflow ui --port 5000
 
 ---
 
-## 📁 Description des fichiers
+## Description des fichiers
 
 | Fichier | Contenu |
 |---------|---------|
