@@ -214,7 +214,7 @@ Le **Preprocess 2** est plus rapide (temps d'exécution) que **Preprocess 3**
 
 ---
 
-### 📊 Tableau récapitulatif Logistic Regression
+### Tableau récapitulatif Logistic Regression
 
 | Embedding | Meilleur Run | Accuracy | F1-Score | Precision |
 |-----------|--------------|----------|----------|-----------|
@@ -277,7 +277,7 @@ Input (text, dtype=string)
 
 ---
 
-### 3.1 Embedding appris (from scratch)
+### 1 Embedding appris (from scratch)
 
 Embedding entraîné directement sur les données Twitter.
 
@@ -295,7 +295,7 @@ Embedding entraîné directement sur les données Twitter.
 
 ---
 
-### 3.2 Word2Vec (pré-entraîné sur données)
+### 2 Word2Vec (pré-entraîné sur données)
 
 Embeddings Word2Vec entraînés sur le corpus Twitter avec Gensim.
 
@@ -329,7 +329,7 @@ modele_word2vec = Word2Vec(
 
 ---
 
-### 3.3 GloVe (pré-entraîné Twitter)
+### 3 GloVe (pré-entraîné Twitter)
 
 Embeddings GloVe pré-entraînés sur Twitter (Stanford).
 
@@ -358,7 +358,7 @@ for i, word in enumerate(vocab):
 
 ---
 
-### 3.4 USE - Universal Sentence Encoder
+### 4 USE - Universal Sentence Encoder
 
 Embeddings de phrases complets (Google TensorFlow Hub).
 
