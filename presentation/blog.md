@@ -71,3 +71,60 @@ Trois stratégies de preprocessing testées :
 **Insight principal :** le preprocessing a un impact plus significatif sur les performances que le choix de l'embedding lui-même.
 
 ![Comparaison modèle sur mesure simple](assets/compare_modele_LR.png)
+
+**Configuration commune à tous les modèles Deep Learning :**
+
+Pour la suite des expérimentations, nous avons exploité le **GPU Apple M2** via TensorFlow pour macOS et l'extension `tensorflow-metal` afin d'accélérer l'entraînement.  
+L'utilisation de `tf.data.Dataset` permet d'optimiser le pipeline de données, notamment grâce au **prefetching**, qui parallélise le chargement des batchs avec l'exécution du modèle.
+
+![Fonction make_dataset](assets/make_dataset.png)
+
+- **Optimiseur** : AdamW (Adam avec weight decay pour meilleure régularisation)
+- **Callbacks** :
+  - `EarlyStopping` : arrêt anticipé si validation loss stagne (patience=5)
+  - `ReduceLROnPlateau` : réduction du learning rate (factor=0.5, patience=3)
+- **Dataset** : 50 000 tweets (70% train / 15% val / 15% test)
+
+---
+
+### Approche 2 : Approche sur mesure avancée
+
+#### Modèle 1 : Deep Learning simple 
+
+Nous avons testé **4 stratégies d'embeddings** pour évaluer l'impact de la représentation vectorielle sur les performances :
+
+
+##### 1.1 Embedding entraîné sur le corpus
+
+**Architecture** :
+![Architecture DL Simple](assets/architecture_DL_Simple.png)
+
+##### 1.2 Word2Vec (pré-entraîné)
+**Architecture** :
+- Chargement des embeddings Word2Vec (Google News, 100 dimensions)
+- `Embedding` initialisé avec weights Word2Vec (trainable=True)
+![Architecture DL Simple Word2vec](assets/architecture_DL_Word2vec.png)
+
+##### 1.3 GloVe (pré-entraîné)
+
+**Architecture** :
+- Chargement des embeddings GloVe (Twitter, 100 dimensions)
+- `Embedding` initialisé avec weights GloVe (trainable=True)
+![Architecture DL Simple GloVe](assets/architecture_DL_gloVe.png)
+
+##### 1.4 Universal Sentence Encoder (USE)
+- Chargement des embeddings USE (512 dimensions)
+![Architecture DL Simple USE](assets/architecture_DL_USE.png)
+
+---
+
+#### Modèle 2 : LSTM (Long Short-Term Memory)
+Les LSTM permettent de capturer les **dépendances temporelles** dans les séquences de texte grâce à leur mécanisme de mémoire à long terme.
+##### 2.1 LSTM  
+![Architecture DL LSTM](assets/architecture_LSTM.png)
+
+##### 2.2 LSTM Bidirectionnel
+![Architecture DL BiLSTM](assets/architecture_BiLSTM.png)
+
+**Comparaison des stratégies d'embedding + LSTM + BiLSTM :**
+![Comparaison approche 2](assets/comparaison_DL_SIMPLE_LSTM_BILSTM.png)

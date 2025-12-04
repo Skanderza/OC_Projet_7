@@ -9,10 +9,10 @@ from .Tweets import PredictedResult
 
 # Chemin  vers le modèle dans MLflow
 # MODEL_PATH = "/Users/skanderzahi/Desktop/P7/projet_7/mlruns/379503310426968982/models/m-bae25b59f2d94b2b82a0e174e5d4d303/artifacts/data/model"
+# MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_keras")
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_keras")
-# MODEL_PATH = os.path.join(os.path.dirname(__file__), "model.tflite") # le modèle TFLite au lieu du modèle Keras complet
 
+MODEL_PATH = "/Users/skanderzahi/Desktop/P7/projet_7/app/models_DistilBert/model_keras"
 MAX_LENGTH = 128
 
 # Initialisation des variables

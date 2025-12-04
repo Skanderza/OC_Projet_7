@@ -86,6 +86,9 @@ list_*.py
 
 
 
-
-
+app/model.tflite
+*.tflite
+*.h5
+*.pt
+*.pth
 

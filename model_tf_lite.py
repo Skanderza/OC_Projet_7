@@ -5,7 +5,7 @@ import tensorflow as tf
 from transformers import TFDistilBertModel 
 
 
-# Chemin vers ton modèle stocké sur MLflow
+# Chemin vers modèle stocké sur MLflow
 MODEL_PATH = "/Users/skanderzahi/Desktop/P7/projet_7/mlruns/379503310426968982/models/m-bae25b59f2d94b2b82a0e174e5d4d303/artifacts/data/model"
 # Chemin de sortie pour le modèle TFLite
 OUTPUT_PATH = "app/model.tflite"
@@ -25,11 +25,13 @@ print("creer le convertisseur")
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 
 print("Optimisation du modèle")
+#test 1
 # Optimisations pour réduire la taille
-# converter.optimizations = [tf.lite.Optimize.DEFAULT] => degrade les performances
+# converter.optimizations = [tf.lite.Optimize.DEFAULT] 
+# => degrade les performances
 
-# Force float32 (pas de quantification)
-converter.target_spec.supported_types = [tf.float32]
+# Test 2 Force float32 (pas de quantification)
+# converter.target_spec.supported_types = [tf.float32]
 
 print("Executer la conversion du modèle")
 # Conversion
