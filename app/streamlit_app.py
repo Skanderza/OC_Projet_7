@@ -51,8 +51,6 @@ tweet_text = st.text_area(
     "Tweet text", placeholder="Your tweet", height=100, max_chars=128
 )
 
-# Compteur de caractères
-st.caption(f"Characters: {len(tweet_text)}/128")
 
 # Bouton de prédiction
 st.markdown("---")
