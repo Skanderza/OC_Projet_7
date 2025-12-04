@@ -29,13 +29,6 @@ def index():
                 "/feedback": " POST - Signaler une erreur de prédiction"
             }} 
 
-# # Route de vérification de l'état du modèle distilbert
-# # @app.get('/health')
-# # def health_check():
-# #     if model is None or tokenizer is None:
-# #         raise HTTPException(503, "Modèle non disponible")
-# #     return {"status": "ok", "model": "loaded", "environment": Environment}
-
 @app.get("/health")
 def health_check():
     if tfidf is None or logreg is None:
@@ -44,38 +37,7 @@ def health_check():
             "model": "logreg_tfidf",
             "environment": Environment}
 
-# # Route pour les prédictions
-# # @app.post('/predict', response_model=PredictedResult)
-# # def predict(tweet: Tweet) -> PredictedResult: 
-    
-# #     # Démarrer le chronomètre
-# #     start_time = time.time()
-    
-# #     # Vérifier que le modèle est chargé
-# #     if model is None or tokenizer is None:
-# #         raise HTTPException(503, "Modèle non chargé")
-    
-# #     try:
-# #         # Prédiction
-# #         result = predict_sentiment(tweet.text)
-        
-# #         # Calculer le temps de réponse en millisecondes
-# #         response_time = (time.time() - start_time) * 1000
-        
-# #         # Log la prédiction
-# #         log_prediction(
-# #             text=result.text,
-# #             sentiment=result.sentiment,
-# #             probability=result.probability,
-# #             confidence=result.confidence,
-# #             response_time=response_time,
-# #             environment=Environment
-# #         )
-# #         return result
-    
-# #     except Exception as e:
-# #         raise HTTPException(500, f"Erreur de prédiction: {str(e)}")
-
+print("=>TFIDF_LR ok")
 # Route pour les prédictions avec modèle léger TF-IDF + LogisticRegression
 @app.post("/predict", response_model=PredictedResult)
 def predict(tweet: Tweet) -> PredictedResult:
