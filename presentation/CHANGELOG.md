@@ -4,7 +4,7 @@ Documentation des versions principales du projet.
 
 ---
 
-## [1.0.0] - 2024-11-17 - VERSION PRODUCTION 
+## [1.0.0] - 2024-11-22 - VERSION PRODUCTION 
 
 ### Modèle : TF-IDF + Logistic Regression
 
@@ -14,7 +14,7 @@ Documentation des versions principales du projet.
 
 **Performance :**
 - Accuracy : 0.79
-- RAM : ~200 MB
+- Taille : 2 MB
 - Déployable sur Heroku 
 
 **Justification :**
@@ -26,7 +26,7 @@ Documentation des versions principales du projet.
 - Notebooks déplacés dans `notebook/`
 - Fichiers temporaires archivés dans `dev/`
 
-## [0.3.0] - 2024-11-12 - Tentative  DistilBERT sans TFLite (tester uniquement en local)
+## [0.3.0] - 2024-11-22 - Tentative  DistilBERT sans TFLite (tester uniquement en local)
 
 ### Modèle : DistilBERT 
 
@@ -35,11 +35,11 @@ Documentation des versions principales du projet.
 
 **Résultat :**
 - Accuracy : 0.81
-- Consommation RAM: >700MB
+- Taille: 766MB
 - Dépassement limite Heroku (512MB)
 - Approche abandonnée contraintes de ressources 
 
-## [0.2.0] - 2024-11-12 - Tentative TFLite 
+## [0.2.0] - 2024-11-19 - Tentative TFLite 
 
 ### Modèle : DistilBERT + TensorFlow Lite
 
@@ -47,6 +47,10 @@ Documentation des versions principales du projet.
 - `app/Model.py` : DistilBERT converti en TFLite
 - `app/model.tflite` : Modèle compressé
 
+**Performance :**
+- Taille tentative 1 : 63.72 MB
+- Taille tentative 2 : 252.56 MB
+- Déployable sur Heroku 
 **Résultat :**
 - Dégradation sevère des performances
 - Approche abandonnée
@@ -54,7 +58,7 @@ Documentation des versions principales du projet.
 **Fichier conservé pour référence et analyse future**
 
 
-## [0.1.0] - 2024-11-13 - Exploration 
+## [0.1.0] - 2024-11-01 - Exploration 
 
 ### Phase d'exploration et expérimentation
 
