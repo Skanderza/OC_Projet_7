@@ -77,22 +77,22 @@ OC_Projet_7/
 │   │   ├── logreg_tfidf_133k.joblib
 │   │   └── tfidf_vectorizer_133k.joblib
 │   ├── .env.example        # Template variables d'environnement
-│   ├── Model.py            # Classe modèle de prédiction
+│   ├── Model.py            # Modèle DistilBert non reduit
 │   ├── Model_LR.py         # Modèle Logistic Regression
 │   ├── Tweets.py           # Schémas Pydantic
 │   ├── app.py              # Application FastAPI
 │   ├── monitoring.py       # Intégration Azure Insights
 │   └── streamlit_app.py    # Interface utilisateur
-│   └── logo.webp    # Logo app
-├── models_final/           # Modèles finaux versionnés
-│   ├── logreg_tfidf_133k.joblib
-│   └── tfidf_vectorizer_133k.joblib
+│   └── logo.webp           # Logo app
+│   └──README.md            # Présentation app
+│
 ├── notebook/
 │   ├── p7_EDA.ipynb                # Analyse exploratoire
 │   ├── p7_modele_simple.ipynb      # Regression logistique
 │   ├── p7_DL_simple.ipynb          # Deep Learning simple
 │   ├── p7_DL_avance.ipynb          # Deep Learning avancé
 │   └── test_model_distilBert.ipynb # Expérimentation BERT
+│   └── README.md                   # Présentation notebooks
 ├── tests/
 │   ├── __init__.py
 │   ├── test_app.py             # Tests API
@@ -100,13 +100,14 @@ OC_Projet_7/
 │   └── test_model_distilbert.py # Tests modèle BERT
 ├── presentation/
 │   └──BLOG.md                 # Article blog MLOps
+│   └──CHANGELOG.md            # Historique des versions
+│   └──assets                  # images pour présentation
 ├── .dockerignore
-├── .gitignore
-├── CHANGELOG.md            # Historique des versions
+├── .gitignore   
 ├── Dockerfile              # Configuration Docker
 ├── Procfile                # Configuration Heroku
-├── README.md               # Ce fichier
-├── model_tf_lite.py        # Script conversion TF Lite
+├── README.md               # Présentation générale
+├── model_tf_lite.py        # Conversion TF Lite
 ├── requirements.txt        # Dépendances Python
 └── runtime.txt             # Version Python Heroku
 ```
@@ -191,3 +192,5 @@ Ce projet est réalisé dans le cadre de la formation **OpenClassrooms - Parcour
 Dataset disponible publiquement sur Kaggle.
 
 ---
+
+

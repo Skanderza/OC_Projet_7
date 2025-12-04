@@ -39,12 +39,19 @@ test-azure/
 app-test/
 app-test1/
 azure_test_exp/
-assets/
+assets_2/
 optuna_test.ipynb
 microsoft_exo1.ipynb
 Model_tf_non_reduit.py
 test_check_model.ipynb
 models/
+models_final/
+app/app_distilBert_complet.py
+app/app_tflite.py
+app/models_DistilBert/
+test_tflite_models.py
+app/Model_TFLite.py
+
 
 # archives dev locales
 dev/
