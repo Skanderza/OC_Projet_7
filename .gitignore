@@ -84,11 +84,7 @@ find_*.py
 match_*.py
 list_*.py
 
-# Images générées automatiquement
-*.png
-*.jpg
-!docs/**/*.png
-!docs/**/*.jpg
+
 
 
 
