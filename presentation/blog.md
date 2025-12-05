@@ -281,3 +281,16 @@ Pour comparer facilement les différentes expériences et d’identifier le mod�
 ![MLflow main](assets/mlflow_main.png)
 
 ---
+
+## Monitoring et Alerting 
+
+Pour surveiller les performances du modèle en production, nous avons mis en place un système de monitoring avec **Azure Application Insights**.
+
+### Architecture du monitoring
+
+1. **API FastAPI** : Log des prédictions et erreurs
+2. **Azure Application Insights** : Collecte et agrégation des logs
+3. **Alertes email** : Notifications automatiques en cas d'anomalies
+
+### Métriques collectées
+![azure_log_prediction](assets/azure_log_prediction.png)
