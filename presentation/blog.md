@@ -168,7 +168,8 @@ Deux configurations testées :
 
   ![DistilBERT dégelé - ROC](assets/Distilbert_best_epochs_3/distilbert_roc_curve_comparaison.png)
 
-Note : À partir de la deuxième epoch, on observe que le modèle généralise moins bien : l’accuracy d’entraînement continue d’augmenter tandis que l’accuracy de validation diminue et que la loss de validation augmente. Cela indique le début d’un overfitting.
+Note : À partir de la deuxième epoch, on observe que le modèle généralise moins bien : l’accuracy d’entraînement continue d’augmenter tandis que l’accuracy de validation diminue et que la loss de validation augmente. Cela indique le début d’un overfitting. 
+=> Deux epochs suffise pour ce cas
 
 - **Trainable = False** (feature extraction)  
 
@@ -177,6 +178,8 @@ Note : À partir de la deuxième epoch, on observe que le modèle généralise m
   ![DistilBERT gelé - ROC](assets/DL_DistilBERT_trainableFalse_128/distilbert_roc_curve.png)  
 
   ![DistilBERT gelé - Training](assets/DL_DistilBERT_trainableFalse_128/distilbert_training_history.png)
+
+Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmentent toutes les deux tandis que les pertes diminuent. L’accuracy de validation reste même légèrement supérieure à celle d’entraînement, ce qui indique que le modèle généralise bien et qu’aucun signe d’overfitting n’apparaît à ce stade expérimenter plus d'epochs
 
 #### Résultats
 
