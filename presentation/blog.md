@@ -325,7 +325,7 @@ Nous pouvons ensuite interroger ces données via des requêtes **KQL**
 
 **Règle d'alerte** pour notre besoin : Si **> 3 mispredictions signalées en 5 minutes** → Email automatique:
 
-*Configuration des alertes dans Azure*
+*Aperçu des alertes dans Azure*
 
 ![azure_misprediction&](assets/azure_misprediction&.png)
 
