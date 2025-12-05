@@ -305,13 +305,16 @@ Pour surveiller les performances du modèle en production, nous avons mis en pla
 
 **Interface Streamlit** :
 *Interface utilisateur : Pouce de signalement d'erreur*
+
 ![streamlit_app.png](assets/streamlit_app.png)
 
 *Exemple de prédiction positive avec feedback*
+
 ![streamlit_positif](assets/streamlit_positif.png)
 
 
 *Exemple de prédiction négative avec feedback*
+
 ![streamlit_negatif](assets/streamlit_negatif.png)
 
 ---
@@ -323,9 +326,11 @@ Nous pouvons ensuite interroger ces données via des requêtes **KQL**
 **Règle d'alerte** pour notre besoin : Si **> 3 mispredictions signalées en 5 minutes** → Email automatique:
 
 *Configuration des alertes dans Azure*
+
 ![azure_misprediction&](assets/azure_misprediction&.png)
 
 *Email reçu lors du déclenchement d'alerte*
+
 ![mail_azure_misprediction](assets/mail_azure_misprediction.png)
 
 - Détection rapide de dégradation du modèle
