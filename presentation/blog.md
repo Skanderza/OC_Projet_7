@@ -196,7 +196,7 @@ Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmente
 
 ## Le Défi TensorFlow Lite 
 
-Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de le compresser via **TensorFlow Lite**.
+Face au problème de taille du modèle DistilBERT, nous avons tenté de le compresser via **TensorFlow Lite**.
 
 ### Tentative 1 : Conversion avec quantification dynamique
 
@@ -224,7 +224,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 ### Tentative 3 : Déployer le modèle sans réduction
 
-**Résultat** : Limite Heroku (512 MB RAM) dépassée ❌  
+**Résultat** : Limite Heroku (512 MB) dépassée, modèle  (766 MB) ❌  
 
 ---
 
