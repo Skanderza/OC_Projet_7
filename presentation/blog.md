@@ -225,7 +225,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 ### Abandon de TensorFlow Lite
 
-**Conclusion** : TensorFlow Lite n'est pas adapté aux modèles Transformer pour notre cas d'usage.
+**Conclusion** : TensorFlow Lite n'est pas adapté mlflopour notre cas d'usage.
 
 ---
 
@@ -233,7 +233,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 Face à l'impossibilité de déployer DistilBERT, nous avons adopté une **approche pragmatique** : choisir le modèle offrant la meilleure précision après DistilBERT.
 
-![MLflow main](assets/mlflow_main.png)
+![MLflow main](assets/mlflow_main_compare.png)
 
 ![Comparaison LR vs BERT](assets/compare_LR_BERT.png)
 
