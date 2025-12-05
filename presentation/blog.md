@@ -231,7 +231,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 ## Choix Final du Modèle {#architecture-mlops}
 
-Face à l'impossibilité de déployer DistilBERT, nous avons adopté une **approche pragmatique** : choisir le modèle offrant la meilleure précision après DistilBERT.
+Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle offrant la meilleure précision après DistilBERT.
 
 ![MLflow main](assets/mlflow_main_compare.png)
 
