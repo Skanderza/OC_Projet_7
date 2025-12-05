@@ -189,7 +189,7 @@ Deux configurations testées :
 
 ---
 
-## Le Défi TensorFlow Lite {#le-défi-tensorflow-lite}
+## Le Défi TensorFlow Lite 
 
 Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de le compresser via **TensorFlow Lite**.
 
