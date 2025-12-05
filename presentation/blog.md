@@ -252,6 +252,8 @@ Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle o
 - Possibilité de ré-entraîner rapidement avec de nouvelles données  
 - Pas de dépendances lourdes  
 
+---
+
 ### Architecture du modèle retenu
 
 **Pipeline complet** :
@@ -266,3 +268,17 @@ tokens → TfidfVectorizer()
 
 # 3. Classification
 vector → LogisticRegression()
+
+---
+
+### Sauvegarde et versioning
+
+**MLflow**  
+![MLflow main](assets/mlflow_main.png)
+
+- **Tracking des expérimentations** : sauvegarde des runs d’entraînement avec leurs métriques et graphiques associés.  
+- **Registre de modèles** : sauvegarde et versioning des modèles (par exemple, au format `joblib` pour le modèle LR_TFIDF).
+
+Cela nous a permis de comparer facilement les différentes expériences et d’identifier le modèle le plus adapté.
+
+---
