@@ -271,14 +271,13 @@ vector → LogisticRegression()
 
 ---
 
-## Sauvegarde et versioning
+### Sauvegarde et versioning
 
-**MLflow**  
-![MLflow main](assets/mlflow_main.png)
+Pour comparer facilement les différentes expériences et d’identifier le modèle le plus adapté(comme vu précédement), nous avons opté pour **MLflow** qui permet de: 
 
 - **Tracking des expérimentations** : sauvegarde des runs d’entraînement avec leurs métriques et graphiques associés.  
 - **Registre de modèles** : sauvegarde et versioning des modèles (par exemple, au format `joblib` pour le modèle LR_TFIDF).
 
-Cela nous a permis de comparer facilement les différentes expériences et d’identifier le modèle le plus adapté.
+![MLflow main](assets/mlflow_main.png)
 
 ---
