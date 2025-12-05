@@ -230,7 +230,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 ### Abandon de TensorFlow Lite
 
-**Conclusion** : TensorFlow Lite n'est pas adapté mlflopour notre cas d'usage.
+**Conclusion** : TensorFlow Lite n'est pas adapté pour notre cas d'usage.
 
 ---
 
