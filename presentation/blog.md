@@ -292,5 +292,43 @@ Pour surveiller les performances du modèle en production, nous avons mis en pla
 2. **Azure Application Insights** : Collecte et agrégation des logs
 3. **Alertes email** : Notifications automatiques en cas d'anomalies
 
+À chaque appel, l’API envoie des logs personnalisés
+
 ### Métriques collectées
 ![azure_log_prediction](assets/azure_log_prediction.png)
+
+---
+
+### Système de feedback utilisateur
+**Endpoint `/feedback`** dans `app.py`:
+![endpoint_feedback](assets/endpoint_feedback.png)
+
+**Interface Streamlit** :
+*Interface utilisateur : Pouce de signalement d'erreur*
+![streamlit_app.png](assets/streamlit_app.png)
+
+*Exemple de prédiction positive avec feedback*
+![streamlit_positif](assets/streamlit_positif.png)
+
+
+*Exemple de prédiction négative avec feedback*
+![streamlit_negatif](assets/streamlit_negatif.png)
+
+---
+
+### Alertes automatiques
+Les logs personnalisés sont stockés principalement dans la table `traces` d’Application Insights.  
+Nous pouvons ensuite interroger ces données via des requêtes **KQL**
+
+**Règle d'alerte** pour notre besoin : Si **> 3 mispredictions signalées en 5 minutes** → Email automatique:
+
+*Configuration des alertes dans Azure*
+![azure_misprediction&](assets/azure_misprediction&.png)
+
+*Email reçu lors du déclenchement d'alerte*
+![mail_azure_misprediction](assets/mail_azure_misprediction.png)
+
+- Détection rapide de dégradation du modèle
+- Réactivité en cas de problème majeur
+
+
