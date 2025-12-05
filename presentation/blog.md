@@ -258,20 +258,20 @@ Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle o
 
 **Pipeline complet** :
 
-# 1. Preprocessing_2
+#### 1. Preprocessing_2
 text 
 ![preprocess_2](assets/preprocess_2.png)
 
-# 2. Vectorisation TF-IDF
+#### 2. Vectorisation TF-IDF
 tokens → TfidfVectorizer()
 ![tfidf_param](assets/tfidf_param.png)
 
-# 3. Classification
+#### 3. Classification
 vector → LogisticRegression()
 
 ---
 
-### Sauvegarde et versioning
+## Sauvegarde et versioning
 
 **MLflow**  
 ![MLflow main](assets/mlflow_main.png)
