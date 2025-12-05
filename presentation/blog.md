@@ -72,6 +72,8 @@ Trois stratégies de preprocessing testées :
 
 ![Comparaison modèle sur mesure simple](assets/compare_modele_LR.png)
 
+---
+
 **Configuration commune à tous les modèles Deep Learning :**
 
 Pour la suite des expérimentations, nous avons exploité le **GPU Apple M2** via TensorFlow pour macOS et l'extension `tensorflow-metal` afin d'accélérer l'entraînement.  
@@ -135,3 +137,90 @@ Les LSTM permettent de capturer les **dépendances temporelles** dans les séque
 
 ![Entete](assets/comparaison_head.png)  
 ![Comparaison approche 2](assets/comparaison_DL_SIMPLE_LSTM_BILSTM.png)
+
+**Insights :**
+- Resultats moyen pour ces modèles où l'accuracy varie entre 0.75 et 0.76 et la precision entre 0.74 et 0.77 pour les LSTM's
+
+### Approche 3 : Approche sur mesure avancée - DistilBERT
+
+Version distillée de BERT (40 % plus léger, 60 % plus rapide, 95 % de performance)
+DistilBERT utilise un tokenizer et un encodage spécifique.
+
+Deux configurations testées :
+
+- **Trainable = True** (fine-tuning complet)
+![DistilBERT dégelé](assets/bert_degelé.png)
+![DistilBERT dégelé - Training](assets/Distilbert_best_epochs_3/training_history.png)
+![DistilBERT dégelé - ROC](assets/Distilbert_best_epochs_3/distilbert_roc_curve_comparaison.png)
+
+- **Trainable = False** (feature extraction)
+![DistilBERT gelé](assets/bert_freeze.png)
+![DistilBERT gelé - ROC](assets/DL_DistilBERT_trainableFalse_128/distilbert_roc_curve.png)
+![DistilBERT gelé - Training](assets/DL_DistilBERT_trainableFalse_128/distilbert_training_history.png)
+
+#### Résultats
+
+![Comparaison DistilBERT](assets/comparaison_distilbert.png)
+
+**Insights** : 
+- Excellente capacité de discrimination entre classes (ROC-AUC : 0.89)
+- Gère mieux les **négations** ("I'm not unhappy" → positif ✅)
+- Comprend les **nuances, ironie**
+- Mieux adapté à l'univers Twitter 
+
+---
+
+## Le Défi TensorFlow Lite {#le-défi-tensorflow-lite}
+
+Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de le compresser via **TensorFlow Lite**.
+
+### Tentative 1 : Conversion avec quantification dynamique
+
+**Résultat** :
+![Réduction TFLite 91%](assets/reduction_tflite_91.png)
+
+**Problème** : Modèle cassé ❌
+![Test TFLite 91%](assets/test_tflite_91.png)
+
+---
+
+### Tentative 2 : Conversion sans optimisation
+
+**Résultat** :
+![Réduction TFLite 67%](assets/reduction_tflite_67.png)
+
+**Problème** : Modèle cassé ❌
+![Test TFLite 67%](assets/test_tflite_67_2.png)
+
+---
+
+### Tentative 3 : Déployer le modèle sans réduction
+
+**Résultat** : Limite Heroku (512 MB RAM) dépassée ❌
+
+---
+
+### Abandon de TensorFlow Lite
+
+**Conclusion** : TensorFlow Lite n'est pas adapté aux modèles Transformer pour notre cas d'usage.
+
+---
+
+## Choix Final du Modèle {#architecture-mlops}
+
+Face à l'impossibilité de déployer DistilBERT, nous avons adopté une **approche pragmatique** : choisir le modèle offrant la meilleure précision après DistilBERT.
+
+![MLflow main](assets/mlflow_main.png)
+
+![Comparaison LR vs BERT](assets/compare_LR_BERT.png)
+
+### Décision : Logistic Regression + TF-IDF
+
+![ROC Curve LR + TF-IDF](assets/roc_curve_LR_TFIDF.png)
+
+**Justifications** :
+- Largement suffisant pour la détection de bad buzz
+- Déployable sur Heroku Free 
+- Possibilité de ré-entraîner rapidement avec nouvelles données
+- Pas de dépendances lourdes
+
