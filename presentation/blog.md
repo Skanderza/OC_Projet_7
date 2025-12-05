@@ -17,7 +17,7 @@ Ce blog revient sur les différentes étapes du projet, de l'expérimentation de
 1. [Données et exploration](#données-et-exploration)  
 2. [Expérimentation et modélisation](#expérimentation-et-modélisation)  
 3. [Le défi TensorFlow Lite](#le-défi-tensorflow-lite)  
-4. [Architecture MLOps](#architecture-mlops)  
+4. [Choix du modèle de production](#Choix_du_modèle_de_production)  
 5. [Monitoring et alerting](#monitoring-et-alerting)  
 6. [Déploiement et production](#déploiement-et-production)  
 7. [Résultats finaux](#résultats-finaux)  
@@ -229,7 +229,7 @@ Face au problème de taille du modèle DistilBERT (766 MB), nous avons tenté de
 
 ---
 
-## Choix Final du Modèle {#architecture-mlops}
+## Choix du modèle de production
 
 Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle offrant la meilleure précision après DistilBERT.
 
