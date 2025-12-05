@@ -168,6 +168,8 @@ Deux configurations testées :
 
   ![DistilBERT dégelé - ROC](assets/Distilbert_best_epochs_3/distilbert_roc_curve_comparaison.png)
 
+Note : À partir de la deuxième epoch, on observe que le modèle généralise moins bien : l’accuracy d’entraînement continue d’augmenter tandis que l’accuracy de validation diminue et que la loss de validation augmente. Cela indique le début d’un overfitting.
+
 - **Trainable = False** (feature extraction)  
 
   ![DistilBERT gelé](assets/bert_freeze.png)  
@@ -250,13 +252,14 @@ Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle o
 ### Architecture du modèle retenu
 
 **Pipeline complet** :
-```python
-# 1. Preprocessing
-text → lowercasing → remove_punctuation → tokenization
+
+# 1. Preprocessing_2
+text 
+![preprocess_2](assets/preprocess_2.png)
 
 # 2. Vectorisation TF-IDF
-tokens → TfidfVectorizer(max_features=10000, ngram_range=(1,2))
+tokens → TfidfVectorizer()
+![tfidf_param](assets/tfidf_param.png)
 
 # 3. Classification
-vector → LogisticRegression(C=1.0, solver='lbfgs')
-```
+vector → LogisticRegression()
