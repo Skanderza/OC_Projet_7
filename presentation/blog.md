@@ -179,7 +179,7 @@ Note : À partir de la deuxième epoch, on observe que le modèle généralise m
 
   ![DistilBERT gelé - Training](assets/DL_DistilBERT_trainableFalse_128/distilbert_training_history.png)
 
-Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmentent toutes les deux tandis que les pertes diminuent. L’accuracy de validation reste même légèrement supérieure à celle d’entraînement, ce qui indique que le modèle généralise bien et qu’aucun signe d’overfitting n’apparaît à ce stade expérimenter plus d'epochs
+Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmentent toutes les deux tandis que les loss diminuent. L’accuracy de validation reste même légèrement supérieure à celle d’entraînement, ce qui indique que le modèle généralise bien et pas d’overfitting. Nous pouvons à ce stade expérimenter plus d'epochs.
 
 #### Résultats
 
