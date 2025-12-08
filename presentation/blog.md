@@ -394,5 +394,5 @@ Nous avons automatisé le déploiement via **GitHub Actions** pour garantir la q
 
 *Interface utilisateur Streamlit déployée*
 
-![App Streamlit](assets/streamlit_app)
+![App Streamlit](assets/streamlit_app.png)
 
