@@ -7,8 +7,10 @@ Air Paradis, compagnie aérienne, a sollicité notre cabinet MIC pour développe
 
 Ce blog revient sur les différentes étapes du projet, de l'expérimentation des modèles jusqu'au déploiement en production.
 
+*Architecture du projet*
+
 ![Structure du projet](assets/structure_projet.png)  
-*Architecture du projet sur GitHub*
+
 
 ---
 
@@ -341,4 +343,56 @@ Nous pouvons ensuite interroger ces données via des requêtes **KQL**
 - Détection rapide de dégradation du modèle
 - Réactivité en cas de problème majeur
 
+
+## déploiement-et-production
+### Pipeline CI/CD avec GitHub Actions
+Nous avons automatisé le déploiement via **GitHub Actions** pour garantir la qualité et la reproductibilité.
+![CI/CD Pipeline](assets/CI_CD)
+
+**Workflow** :
+1. **Push sur `main`** → Déclenchement automatique
+2. **Tests unitaires** : Validation du modèle et de l'API
+3. **Build Docker** : Construction de l'image
+4. **Push Heroku** : Déploiement automatique
+5. **Health check** : Vérification de l'API en production
+
+
+![ci_cd_yml_1](assets/ci_cd_yml_1.png)
+
+![ci_cd_yml_2](assets/ci_cd_yml_2.png)
+
+### Architecture de production
+
+**Stack technique** :
+- **Backend** : FastAPI 
+- **Modèle** : Scikit-learn (joblib)
+- **Serveur** : Uvicorn 
+- **Conteneur** : Docker
+- **Hébergement** : Heroku 
+- **Monitoring** : Azure Application Insights
+- **CI/CD** : GitHub Actions
+
+**Dockerfile** :
+
+![dockerfile](assets/dockerfile.png)
+
+**Requirements** :
+
+![requirements](assets/requirements.png)
+
+### Déploiement sur Heroku
+
+**Commandes** :
+
+![deploiment_heroku](assets/deploiment_heroku.png)
+
+**URL production** : `https://sentiment-twitter-p7-357ab866923c.herokuapp.com/docs`
+
+**Endpoints disponibles** :
+
+![heroku_app](assets/heroku_app.png)
+
+*Interface utilisateur Streamlit déployée*
+
+![App Streamlit](assets/streamlit_app)
 
