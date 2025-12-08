@@ -300,10 +300,13 @@ Pour surveiller les performances du modèle en production, nous avons mis en pla
 ---
 
 ### Système de feedback utilisateur
+
 **Endpoint `/feedback`** dans `app.py`:
+
 ![endpoint_feedback](assets/endpoint_feedback.png)
 
 **Interface Streamlit** :
+
 *Interface utilisateur : Pouce de signalement d'erreur*
 
 ![streamlit_app.png](assets/streamlit_app.png)
@@ -330,6 +333,8 @@ Nous pouvons ensuite interroger ces données via des requêtes **KQL**
 ![azure_misprediction&](assets/azure_misprediction&.png)
 
 *Email reçu lors du déclenchement d'alerte*
+
+![erreur_pred_mail](assets/erreur_pred_mail.png)
 
 ![mail_azure_misprediction](assets/mail_azure_misprediction.png)
 
