@@ -321,7 +321,7 @@ Image pour les tests locaux + image poussée dans le Container Registry Heroku :
 ### Pipeline CI/CD avec GitHub Actions
 
 Nous avons automatisé le déploiement via **GitHub Actions** pour garantir la qualité et la reproductibilité.  
-![CI/CD Pipeline](assets/CI_CD)
+![CI/CD Pipeline](assets/CI_CD.png)
 
 **Workflow :**
 1. **Push sur `main`** → déclenchement automatique  
