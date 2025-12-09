@@ -1,16 +1,15 @@
-# Analyse de sentiment Twitter : Construction d'un système de prédiction avec une approche MLOps
+# Analyse de sentiment Twitter : construction d'un système de prédiction avec une approche MLOps
 
 ## Problématique
 
 Air Paradis, compagnie aérienne, a sollicité notre cabinet MIC pour développer un outil capable de prédire le sentiment lié à un tweet.  
 **L'objectif : anticiper les bad buzz avant qu'ils ne deviennent viraux.**
 
-Ce blog revient sur les différentes étapes du projet, de l'expérimentation des modèles jusqu'au déploiement en production.
+Ce blog revient sur les différentes étapes du projet, de l'exploration des données et de l'expérimentation des modèles jusqu'au déploiement en production.
 
 *Architecture du projet*
 
 ![Structure du projet](assets/structure_projet.png)  
-
 
 ---
 
@@ -19,10 +18,10 @@ Ce blog revient sur les différentes étapes du projet, de l'expérimentation de
 1. [Données et exploration](#données-et-exploration)  
 2. [Expérimentation et modélisation](#expérimentation-et-modélisation)  
 3. [Le défi TensorFlow Lite](#le-défi-tensorflow-lite)  
-4. [Choix du modèle de production](#Choix_du_modèle_de_production)  
-5. [Monitoring et alerting](#monitoring-et-alerting)  
-6. [Déploiement et production](#déploiement-et-production)  
-7. [Résultats finaux](#résultats-finaux)  
+4. [Choix du modèle de production](#choix-du-modèle-de-production)  
+5. [Déploiement et production](#déploiement-et-production)  
+6. [Monitoring et alerting](#monitoring-et-alerting)  
+7. [Conclusion](#conclusion)  
 
 ---
 
@@ -72,7 +71,7 @@ Trois stratégies de preprocessing testées :
 - GloVe (pré-entraîné)  
 - Universal Sentence Encoder (USE)  
 
-> **Note :** Nous avons utilisé d’abord **GridSearchCV** pour explorer une petite grille d’hyperparamètres, puis **Optuna** pour élargir l’espace de recherche de manière plus efficace et adaptative.
+> **Note :** nous avons d’abord utilisé **GridSearchCV** pour explorer une petite grille d’hyperparamètres, puis **Optuna** pour élargir l’espace de recherche de manière plus efficace et adaptative.
 
 **Insight principal :** le preprocessing a un impact plus significatif sur les performances que le choix de l'embedding lui-même.
 
@@ -151,13 +150,13 @@ Les LSTM permettent de capturer les **dépendances temporelles** dans les séque
 
 **Insights :**
 
-- Resultats moyen pour ces modèles où l'accuracy varie entre 0.75 et 0.76 et la precision entre 0.74 et 0.77 pour les LSTM's  
+- Résultats moyens pour ces modèles, avec une accuracy entre 0,75 et 0,76 et une précision entre 0,74 et 0,77 pour les LSTM.  
 
 ---
 
-### Approche 3 : Approche sur mesure avancée - DistilBERT
+### Approche 3 : Approche sur mesure avancée – DistilBERT
 
-Version distillée de BERT (40 % plus léger, 60 % plus rapide, 95 % de performance).  
+Version distillée de BERT (40 % plus léger, 60 % plus rapide, 95 % des performances).  
 DistilBERT utilise un tokenizer et un encodage spécifiques.
 
 Deux configurations testées :
@@ -170,8 +169,8 @@ Deux configurations testées :
 
   ![DistilBERT dégelé - ROC](assets/Distilbert_best_epochs_3/distilbert_roc_curve_comparaison.png)
 
-Note : À partir de la deuxième epoch, on observe que le modèle généralise moins bien : l’accuracy d’entraînement continue d’augmenter tandis que l’accuracy de validation diminue et que la loss de validation augmente. Cela indique le début d’un overfitting. 
-=> Deux epochs suffise pour ce cas
+Note : à partir de la deuxième epoch, on observe que le modèle généralise moins bien : l’accuracy d’entraînement continue d’augmenter tandis que l’accuracy de validation diminue et que la loss de validation augmente. Cela indique le début d’un overfitting.  
+→ **Deux epochs suffisent** pour ce cas.
 
 - **Trainable = False** (feature extraction)  
 
@@ -181,7 +180,7 @@ Note : À partir de la deuxième epoch, on observe que le modèle généralise m
 
   ![DistilBERT gelé - Training](assets/DL_DistilBERT_trainableFalse_128/distilbert_training_history.png)
 
-Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmentent toutes les deux tandis que les loss diminuent. L’accuracy de validation reste même légèrement supérieure à celle d’entraînement, ce qui indique que le modèle généralise bien et pas d’overfitting. Nous pouvons à ce stade expérimenter plus d'epochs.
+Note : sur ces courbes, l’accuracy d’entraînement et de validation augmentent toutes les deux tandis que les loss diminuent. L’accuracy de validation reste même légèrement supérieure à celle d’entraînement, ce qui indique que le modèle généralise bien et qu’il n’y a pas d’overfitting visible. Nous pouvons à ce stade expérimenter davantage d’epochs.
 
 #### Résultats
 
@@ -189,14 +188,14 @@ Note : Sur ces courbes, l’accuracy d’entraînement et de validation augmente
 
 **Insights** : 
 
-- Excellente capacité de discrimination entre classes (ROC-AUC : 0.89)  
+- Excellente capacité de discrimination entre classes (ROC-AUC : 0,89)  
 - Gère mieux les **négations** ("I'm not unhappy" → positif ✅)  
-- Comprend les **nuances, ironie**  
+- Comprend mieux les **nuances** et l’**ironie**  
 - Mieux adapté à l'univers Twitter  
 
 ---
 
-## Le Défi TensorFlow Lite 
+## Le défi TensorFlow Lite 
 
 Face au problème de taille du modèle DistilBERT, nous avons tenté de le compresser via **TensorFlow Lite**.
 
@@ -206,7 +205,7 @@ Face au problème de taille du modèle DistilBERT, nous avons tenté de le compr
 
 ![Réduction TFLite 91%](assets/reduction_tflite_91.png)
 
-**Problème** : Modèle cassé ❌  
+**Problème** : modèle cassé ❌  
 
 ![Test TFLite 91%](assets/test_tflite_91.png)
 
@@ -218,7 +217,7 @@ Face au problème de taille du modèle DistilBERT, nous avons tenté de le compr
 
 ![Réduction TFLite 67%](assets/reduction_tflite_67.png)
 
-**Problème** : Modèle cassé ❌  
+**Problème** : modèle cassé ❌  
 
 ![Test TFLite 67%](assets/test_tflite_67_2.png)
 
@@ -226,7 +225,7 @@ Face au problème de taille du modèle DistilBERT, nous avons tenté de le compr
 
 ### Tentative 3 : Déployer le modèle sans réduction
 
-**Résultat** : Limite Heroku (512 MB) dépassée, modèle  (766 MB) ❌  
+**Résultat** : limite Heroku (512 MB) dépassée, modèle de 766 MB ❌  
 
 ---
 
@@ -248,10 +247,9 @@ Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle o
 
 ![ROC Curve LR + TF-IDF](assets/roc_curve_LR_TFIDF.png)
 
-
 - Largement suffisant pour la détection de bad buzz  
 - Déployable sur Heroku Free  
-- Possibilité de ré-entraîner rapidement avec de nouvelles données  
+- Possibilité de réentraîner rapidement avec de nouvelles données  
 - Pas de dépendances lourdes  
 
 ---
@@ -261,138 +259,188 @@ Face à l'impossibilité de déployer DistilBERT, nous avons choisi le modèle o
 **Pipeline complet** :
 
 #### 1. Preprocessing_2
-text 
+text  
 ![preprocess_2](assets/preprocess_2.png)
 
 #### 2. Vectorisation TF-IDF
-tokens → TfidfVectorizer()
+tokens → `TfidfVectorizer()`  
 ![tfidf_param](assets/tfidf_param.png)
 
 #### 3. Classification
-vector → LogisticRegression()
+vector → `LogisticRegression()`
 
 ---
 
 ### Sauvegarde et versioning
 
-Pour comparer facilement les différentes expériences et d’identifier le modèle le plus adapté(comme vu précédement), nous avons opté pour **MLflow** qui permet de: 
+Pour comparer facilement les différentes expériences et identifier le modèle le plus adapté (comme vu précédemment), nous avons opté pour **MLflow**, qui permet de :
 
-- **Tracking des expérimentations** : sauvegarde des runs d’entraînement avec leurs métriques et graphiques associés.  
-- **Registre de modèles** : sauvegarde et versioning des modèles (par exemple, au format `joblib` pour le modèle LR_TFIDF).
+- **Suivre les expérimentations** : sauvegarde des runs d’entraînement avec leurs métriques et graphiques associés.  
+- **Gérer un registre de modèles** : sauvegarde et versioning des modèles (par exemple, au format `joblib` pour le modèle LR_TFIDF).
 
 ![MLflow main](assets/mlflow_main.png)
 
 ---
 
-## Monitoring et Alerting 
+## Déploiement et production
+
+### Architecture de production
+
+**Stack technique** :
+- **Backend** : FastAPI  
+- **Modèle** : Scikit-learn (joblib)  
+- **Serveur** : Uvicorn  
+- **Conteneur** : Docker  
+- **Hébergement** : Heroku  
+- **Monitoring** : Azure Application Insights  
+- **CI/CD** : GitHub Actions  
+
+### Tests unitaires
+
+Pour vérifier le bon fonctionnement de notre application, et avant chaque déploiement, une série de tests unitaires valide le comportement du modèle et de l’API.
+
+#### Structure des tests
+![architecture_test](assets/architecture_test.png)
+
+#### `test_model.py` : tests du modèle
+Vérifie que le modèle se charge correctement et prédit de manière cohérente.  
+![unittest_model](assets/unittest_model.png)
+
+#### `test_api.py` : tests des endpoints
+Vérifie que l'API répond correctement aux requêtes.  
+![unittest_app.png](assets/unittest_app.png)
+
+### Conteneurisation Docker
+
+Dans notre projet, nous avons utilisé **Docker** pour packager l’application et ses dépendances dans un conteneur isolé. L’objectif est de garantir que le code fonctionne de manière identique en local et en production.  
+Concrètement, nous construisons d’abord l’image Docker, puis nous la poussons dans le **Container Registry Heroku**, qui se charge ensuite de déployer et d’exécuter le conteneur.
+
+Image pour les tests locaux + image poussée dans le Container Registry Heroku :  
+![docker](assets/docker.png)
+
+### Pipeline CI/CD avec GitHub Actions
+
+Nous avons automatisé le déploiement via **GitHub Actions** pour garantir la qualité et la reproductibilité.  
+![CI/CD Pipeline](assets/CI_CD)
+
+**Workflow :**
+1. **Push sur `main`** → déclenchement automatique  
+2. **Tests unitaires** : validation du modèle et de l'API  
+3. **Build Docker** : construction de l'image  
+4. **Push Heroku** : déploiement automatique  
+5. **Health check** : vérification de l'API en production  
+
+![ci_cd_yml_1](assets/ci_cd_yml_1.png)
+
+![ci_cd_yml_2](assets/ci_cd_yml_2.png)
+
+**Dockerfile** :  
+
+![dockerfile](assets/dockerfile.png)
+
+**Requirements** :  
+
+![requirements](assets/requirements.png)
+
+### Déploiement sur Heroku
+
+**Commandes** :  
+
+![deploiment_heroku](assets/deploiment_heroku.png)
+
+**URL production** :  
+`https://sentiment-twitter-p7-357ab866923c.herokuapp.com/docs`
+
+**Endpoints disponibles** :  
+
+![heroku_app](assets/heroku_app.png)
+
+*Interface utilisateur Streamlit déployée*  
+
+![App Streamlit](assets/streamlit_app.png)
+
+---
+
+## Monitoring et alerting 
 
 Pour surveiller les performances du modèle en production, nous avons mis en place un système de monitoring avec **Azure Application Insights**.
 
 ### Architecture du monitoring
 
-1. **API FastAPI** : Log des prédictions et erreurs
-2. **Azure Application Insights** : Collecte et agrégation des logs
-3. **Alertes email** : Notifications automatiques en cas d'anomalies
+1. **API FastAPI** : journalise les prédictions et les erreurs  
+2. **Azure Application Insights** : collecte et agrège les logs  
+3. **Alertes email** : notifications automatiques en cas d'anomalies  
 
-À chaque appel, l’API envoie des logs personnalisés
+À chaque appel, l’API envoie des logs personnalisés vers Application Insights.
 
 ### Métriques collectées
+
 ![azure_log_prediction](assets/azure_log_prediction.png)
 
 ---
 
 ### Système de feedback utilisateur
 
-**Endpoint `/feedback`** dans `app.py`:
+**Endpoint `/feedback` dans `app.py` :**  
 
 ![endpoint_feedback](assets/endpoint_feedback.png)
 
 **Interface Streamlit** :
 
-*Interface utilisateur : Pouce de signalement d'erreur*
+*Interface utilisateur : pouce de signalement d'erreur*  
 
 ![streamlit_app.png](assets/streamlit_app.png)
 
-*Exemple de prédiction positive avec feedback*
+*Exemple de prédiction positive avec feedback*  
 
 ![streamlit_positif](assets/streamlit_positif.png)
 
-
-*Exemple de prédiction négative avec feedback*
+*Exemple de prédiction négative avec feedback*  
 
 ![streamlit_negatif](assets/streamlit_negatif.png)
 
 ---
 
 ### Alertes automatiques
+
 Les logs personnalisés sont stockés principalement dans la table `traces` d’Application Insights.  
-Nous pouvons ensuite interroger ces données via des requêtes **KQL**
+Nous pouvons ensuite interroger ces données via des requêtes **KQL** pour analyser le comportement du système.
 
-**Règle d'alerte** pour notre besoin : Si **> 3 mispredictions signalées en 5 minutes** → Email automatique:
+**Règle d'alerte définie pour notre besoin :**  
+Si **> 3 mispredictions** sont signalées en 5 minutes → envoi automatique d’un email.
 
-*Aperçu des alertes dans Azure*
+*Aperçu des alertes dans Azure*  
 
 ![azure_misprediction&](assets/azure_misprediction&.png)
 
-*Email reçu lors du déclenchement d'alerte*
+*Email reçu lors du déclenchement d'alerte*  
 
 ![erreur_pred_mail](assets/erreur_pred_mail.png)
 
 ![mail_azure_misprediction](assets/mail_azure_misprediction.png)
 
-- Détection rapide de dégradation du modèle
+- Détection rapide d’une dégradation du modèle  
 - Réactivité en cas de problème majeur
 
 
-## déploiement-et-production
-### Pipeline CI/CD avec GitHub Actions
-Nous avons automatisé le déploiement via **GitHub Actions** pour garantir la qualité et la reproductibilité.
-![CI/CD Pipeline](assets/CI_CD)
 
-**Workflow** :
-1. **Push sur `main`** → Déclenchement automatique
-2. **Tests unitaires** : Validation du modèle et de l'API
-3. **Build Docker** : Construction de l'image
-4. **Push Heroku** : Déploiement automatique
-5. **Health check** : Vérification de l'API en production
+## Conclusion
+Dans ce projet nous ne nous limitons pas uniquement à entraîner un modèle performant mais à concevoir un cas d'usage MLOps complet.
 
+La première phase a consisté à explorer différentes approches de modèles (Régression logistique, LSTM, BiLSTM, DistilBERT) avec un suivi des expériences dans **MLflow**, afin de garder une traçabilité claire des choix et des performances.
 
-![ci_cd_yml_1](assets/ci_cd_yml_1.png)
+Le modèle final n’a pas été guidée uniquement par l’accuracy ou la précision, mais aussi par des contraintes **opérationnelles** de déploiement (taille du modèle, limites Heroku).
 
-![ci_cd_yml_2](assets/ci_cd_yml_2.png)
+La deuxième phase a porté sur l’industrialisation :  
+- création d’une **API FastAPI** conteneurisée avec **Docker**,  
+- mise en place d’une pipeline **CI/CD GitHub Actions** exécutant systématiquement les tests unitaires avant chaque déploiement,  
+- déploiement automatisé sur **Heroku** à partir de l’image Docker.
 
-### Architecture de production
+Enfin, la troisième brique clé est le **monitoring en production** avec **Azure Application Insights** : logs de prédictions, système de feedback utilisateur, règles d’alerte sur les mauvaises prédictions. Ce processus transforme le modèle en un système vivant, observable, et améliorable dans le temps.
 
-**Stack technique** :
-- **Backend** : FastAPI 
-- **Modèle** : Scikit-learn (joblib)
-- **Serveur** : Uvicorn 
-- **Conteneur** : Docker
-- **Hébergement** : Heroku 
-- **Monitoring** : Azure Application Insights
-- **CI/CD** : GitHub Actions
+Axe d'améliorations:
+- Pipelines de réentraînement automatique à partir de nouvelles données.
+- Surveillance de la dérive des données (data drift),
+- Infrastructure plus adaptée pour réintroduire des modèles plus lourds (DistilBERT)
 
-**Dockerfile** :
-
-![dockerfile](assets/dockerfile.png)
-
-**Requirements** :
-
-![requirements](assets/requirements.png)
-
-### Déploiement sur Heroku
-
-**Commandes** :
-
-![deploiment_heroku](assets/deploiment_heroku.png)
-
-**URL production** : `https://sentiment-twitter-p7-357ab866923c.herokuapp.com/docs`
-
-**Endpoints disponibles** :
-
-![heroku_app](assets/heroku_app.png)
-
-*Interface utilisateur Streamlit déployée*
-
-![App Streamlit](assets/streamlit_app.png)
-
+Ce projet propose un produit IA de prédiction monitoré et déployé en continu, capable d’apporter une valeur ajoutée à Air Paradis.
