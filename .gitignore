@@ -52,6 +52,7 @@ app/models_DistilBert/
 test_tflite_models.py
 app/Model_TFLite.py
 tests/test_model_distilbert.py
+.coverage
 
 
 # archives dev locales
