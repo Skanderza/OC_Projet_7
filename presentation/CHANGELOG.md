@@ -51,6 +51,7 @@ Documentation des versions principales du projet.
 - Taille tentative 1 : 63.72 MB
 - Taille tentative 2 : 252.56 MB
 - Déployable sur Heroku 
+
 **Résultat :**
 - Dégradation sevère des performances
 - Approche abandonnée
