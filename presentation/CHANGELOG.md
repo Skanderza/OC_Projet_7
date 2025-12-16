@@ -59,7 +59,7 @@ Documentation des versions principales du projet.
 **Fichier conservé pour référence et analyse future**
 
 
-## [0.1.0] - 2024-11-01 - Exploration 
+## [0.1.0] - 2024-10-01 - Exploration 
 
 ### Phase d'exploration et expérimentation
 
